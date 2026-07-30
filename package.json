@@ -14,7 +14,7 @@
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",
-    "test:unit": "vitest run",
+    "test:unit": "vitest run tests/unit",
     "test:e2e": "playwright test",
     "test": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
     "postinstall": "nuxt prepare"
@@ -37,6 +37,7 @@
     "@nuxt/test-utils": "^4.1.0",
     "@playwright/test": "^1.62.0",
     "@unocss/nuxt": "^66.7.5",
+    "eslint": "^10.8.0",
     "happy-dom": "^20.11.1",
     "typescript": "^5.9.3",
     "unocss": "^66.7.5",
