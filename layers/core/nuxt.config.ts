@@ -18,4 +18,12 @@ export default defineNuxtConfig({
       },
     ],
   },
+  runtimeConfig: {
+    backendBaseUrl: '',
+    cookieSecret: '',
+    public: {
+      siteUrl: 'http://localhost:3001',
+      siteName: '通用 SSR 站点',
+    },
+  },
 });
