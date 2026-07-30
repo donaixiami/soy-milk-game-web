@@ -7,6 +7,15 @@ test('公开首页输出可索引正文和 canonical', async ({ page }) => {
   expect(response?.status()).toBe(200);
 });
 
+test('首页完成客户端水合并可切换明暗主题', async ({ page }) => {
+  const errors: Error[] = [];
+  page.on('pageerror', error => errors.push(error));
+  await page.goto('/');
+  await page.getByRole('button', { name: '切换明暗主题' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  expect(errors).toEqual([]);
+});
+
 test('登录页禁止搜索引擎收录', async ({ page }) => {
   await page.goto('/login');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,nofollow');

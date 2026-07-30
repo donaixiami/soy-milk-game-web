@@ -1,7 +1,8 @@
 export const SECURITY_HEADERS = {
   'content-security-policy': [
     "default-src 'self'",
-    "script-src 'self'",
+    // Nuxt SSR 会内联注入 payload/config 引导脚本；禁止它会导致页面仅 SSR 可见但客户端水合失败。
+    "script-src 'self' 'unsafe-inline'",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob:",
     "font-src 'self' data:",

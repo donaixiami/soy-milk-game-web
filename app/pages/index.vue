@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { isHydrated, resolvedMode, toggleMode } = useTheme();
+
 useSeoPage({
   title: '通用 SSR 站点',
   description: '面向高 SEO 要求项目的 Nuxt 4 服务端渲染基础框架。',
@@ -14,6 +16,15 @@ useSeoPage({
 
 <template>
   <main class="mx-auto max-w-5xl px-6 py-24">
+    <button
+      type="button"
+      class="mb-10 rounded-lg border border-solid border-current bg-transparent px-4 py-2 text-sm"
+      aria-label="切换明暗主题"
+      :disabled="!isHydrated"
+      @click="toggleMode"
+    >
+      {{ resolvedMode === 'dark' ? '切换到浅色' : '切换到深色' }}
+    </button>
     <p class="mb-3 text-sm text-primary font-600">Nuxt 4 · SSR Foundation</p>
     <h1 class="m-0 text-4xl font-700">通用 SSR 站点</h1>
     <p class="mt-5 max-w-2xl text-base leading-7 opacity-75">
