@@ -34,6 +34,10 @@ export default defineNuxtConfig({
       siteName: '通用 SSR 站点',
     },
   },
+  nitro: {
+    // Nitro 会把路径写入虚拟模块，Windows 反斜杠必须标准化以免被当作转义字符。
+    errorHandler: fileURLToPath(new URL('./server/error.ts', import.meta.url)).replaceAll('\\', '/'),
+  },
   routeRules: {
     '/': { cache: { maxAge: 60 }, headers: SECURITY_HEADERS },
     '/api/auth/**': { cache: false, headers: { ...SECURITY_HEADERS, 'cache-control': 'no-store' } },

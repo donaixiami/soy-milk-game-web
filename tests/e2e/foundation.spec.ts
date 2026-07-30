@@ -37,3 +37,17 @@ test('健康检查返回进程可用状态', async ({ request }) => {
   expect(response.status()).toBe(200);
   await expect(response.json()).resolves.toEqual({ status: 'ok' });
 });
+
+test('认证 BFF 拒绝不可信来源并返回 403', async ({ request }) => {
+  const response = await request.post('/api/auth/login', {
+    headers: { origin: 'https://evil.test' },
+    data: { username: 'demo', password: 'secret' },
+  });
+
+  expect(response.status()).toBe(403);
+  await expect(response.json()).resolves.toEqual({
+    code: -1,
+    data: null,
+    message: '请求来源不受信任',
+  });
+});
