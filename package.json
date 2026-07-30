@@ -1,0 +1,44 @@
+{
+  "name": "soy-milk-game-web",
+  "type": "module",
+  "private": true,
+  "packageManager": "npm@10.9.3",
+  "engines": {
+    "node": ">=22.19.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint .",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@nuxt/image": "^2.1.0",
+    "@nuxtjs/i18n": "^10.5.0",
+    "@pinia/nuxt": "^1.0.1",
+    "ant-design-vue": "^4.2.6",
+    "echarts": "^6.1.0",
+    "gsap": "^3.15.0",
+    "nuxt": "^4.5.1",
+    "pinia": "^4.0.2",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/test-utils": "^4.1.0",
+    "@playwright/test": "^1.62.0",
+    "happy-dom": "^20.11.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.8"
+  }
+}
