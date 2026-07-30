@@ -1,3 +1,10 @@
-:root { color-scheme: light dark; font-family: Inter, system-ui, sans-serif; }
+:root {
+  color-scheme: light dark;
+  font-family: Inter, system-ui, sans-serif;
+  --app-primary: #0f9f8f;
+  --app-accent: #75e6cf;
+}
+[data-color-preset='night-violet'] { --app-primary: #6857e5; --app-accent: #8da2ff; }
+[data-color-preset='charcoal-amber'] { --app-primary: #c78325; --app-accent: #f3b75f; }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; }
