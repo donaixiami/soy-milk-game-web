@@ -8,6 +8,7 @@ SEO 优先的通用 Nuxt 4 SSR 框架。第一阶段只建设可复用底层能�
 
 - Node.js 22.19+、npm 10+
 - Nuxt 4、Vue 3、严格 TypeScript
+- UnoCSS；页面视觉确认后再迁移稳定样式，少于四次复用不创建 shortcut
 - 根应用继承本地 `layers/core`
 - Nitro Node SSR，后续由 Nginx 反向代理
 

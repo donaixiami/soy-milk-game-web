@@ -36,8 +36,10 @@
     "@nuxt/eslint": "^1.16.0",
     "@nuxt/test-utils": "^4.1.0",
     "@playwright/test": "^1.62.0",
+    "@unocss/nuxt": "^66.7.5",
     "happy-dom": "^20.11.1",
     "typescript": "^5.9.3",
+    "unocss": "^66.7.5",
     "vitest": "^4.1.10",
     "vue-tsc": "^3.3.8"
   }
