@@ -23,6 +23,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     backendBaseUrl: '',
     cookieSecret: '',
+    auth: {
+      loginPath: '/api/auth/login',
+      logoutPath: '/api/auth/logout',
+      refreshPath: '/api/auth/refresh',
+      sessionPath: '/api/auth/session',
+    },
     public: {
       siteUrl: 'http://localhost:3001',
       siteName: '通用 SSR 站点',

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { AUTH_COOKIE_OPTIONS, AUTH_COOKIE_NAMES } from '../../layers/core/server/utils/cookies';
-import { assertCsrfRequest } from '../../layers/core/server/utils/csrf';
+import { assertCsrfRequest, assertTrustedOrigin } from '../../layers/core/server/utils/csrf';
 import { createSessionRefreshCoordinator } from '../../layers/core/server/utils/session-refresh';
 
 describe('认证 Cookie', () => {
@@ -13,6 +13,12 @@ describe('认证 Cookie', () => {
 });
 
 describe('CSRF 校验', () => {
+  it('首次登录仅接受站点同源请求', () => {
+    expect(() => assertTrustedOrigin('https://site.test', 'https://evil.test'))
+      .toThrowError('请求来源不受信任');
+    expect(() => assertTrustedOrigin('https://site.test', 'https://site.test')).not.toThrow();
+  });
+
   it('拒绝来源不匹配的写请求', () => {
     expect(() => assertCsrfRequest({ expectedOrigin: 'https://site.test', origin: 'https://evil.test', cookieToken: 'a', headerToken: 'a' }))
       .toThrowError('请求来源不受信任');
