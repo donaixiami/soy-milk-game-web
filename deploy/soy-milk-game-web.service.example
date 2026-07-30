@@ -1,0 +1,19 @@
+[Unit]
+Description=soy-milk-game-web Nuxt SSR
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/srv/soy-milk-game-web
+EnvironmentFile=/etc/soy-milk-game-web.env
+Environment=NITRO_HOST=127.0.0.1
+Environment=NITRO_PORT=3001
+ExecStart=/usr/bin/node .output/server/index.mjs
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

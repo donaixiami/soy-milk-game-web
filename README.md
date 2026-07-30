@@ -11,7 +11,7 @@ SEO 优先的通用 Nuxt 4 SSR 框架。当前阶段不包含游戏目录、房�
 ## 安装与开发
 
 ```bash
-npm install --legacy-peer-deps
+npm install
 copy .env.example .env
 npm run dev
 ```
@@ -33,3 +33,7 @@ npm run test:e2e
 - 浏览器令牌只允许进入 HttpOnly Cookie，不进入 localStorage。
 - 公开页面使用 SSR；登录后页面默认 noindex 且禁止公共缓存。
 - 游戏业务需要后续独立授权与实施计划。
+
+## 生产部署
+
+生产环境使用 `npm ci && npm run build` 构建，由 Node 运行 `.output/server/index.mjs`，并通过 Nginx 提供 HTTPS 反向代理。详细配置见 [生产部署说明](docs/deployment.md)。
