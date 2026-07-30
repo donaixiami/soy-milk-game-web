@@ -9,5 +9,5 @@ export function useApiData<T>(
   const key = buildAsyncDataKey(resource, locale.value, query);
 
   // useAsyncData 的 payload 会在水合时复用，避免客户端重复请求 SSR 已获得的数据。
-  return useAsyncData<T>(key, () => $fetch<T>(url, { query }));
+  return useAsyncData<T>(key, () => $fetch(url, { query }) as Promise<T>);
 }
