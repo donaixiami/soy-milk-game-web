@@ -29,10 +29,11 @@ NUXT_BACKEND_BASE_URL=http://127.0.0.1:3000
 NUXT_COOKIE_SECRET=<至少 32 位随机字符串>
 NUXT_PUBLIC_SITE_URL=https://example.com
 NUXT_PUBLIC_SITE_NAME=<站点名称>
-NUXT_AUTH_LOGIN_PATH=/api/auth/login
-NUXT_AUTH_LOGOUT_PATH=/api/auth/logout
-NUXT_AUTH_REFRESH_PATH=/api/auth/refresh
-NUXT_AUTH_SESSION_PATH=/api/auth/session
+NUXT_AUTH_REGISTER_PATH=/api/game-api/auth/register
+NUXT_AUTH_LOGIN_PATH=/api/game-api/auth/login
+NUXT_AUTH_LOGOUT_PATH=/api/game-api/auth/logout
+NUXT_AUTH_REFRESH_PATH=/api/game-api/auth/refresh
+NUXT_AUTH_SESSION_PATH=/api/game-api/auth/session
 ```
 
 `NUXT_PUBLIC_SITE_URL` 必须与浏览器实际访问的 HTTPS Origin 完全一致，否则认证写请求会被同源校验拒绝。密钥和真实 `.env` 不得提交到 Git。

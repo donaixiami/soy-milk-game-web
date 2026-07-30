@@ -6,6 +6,7 @@ interface AuthTokens<TSession> {
 
 interface AuthBackend<TCredentials, TSession> {
   login(credentials: TCredentials): Promise<AuthTokens<TSession>>;
+  register(credentials: TCredentials): Promise<AuthTokens<TSession>>;
   logout(refreshToken: string): Promise<void>;
   refresh(refreshToken: string): Promise<AuthTokens<TSession>>;
   session(accessToken: string): Promise<TSession>;
@@ -23,6 +24,12 @@ export function createAuthBffService<TCredentials, TSession>(dependencies: {
   const { backend, cookies } = dependencies;
 
   return {
+    async register(credentials: TCredentials) {
+      const result = await backend.register(credentials);
+      cookies.setTokens(result.accessToken, result.refreshToken);
+      return { session: result.session };
+    },
+
     async login(credentials: TCredentials) {
       const result = await backend.login(credentials);
       cookies.setTokens(result.accessToken, result.refreshToken);

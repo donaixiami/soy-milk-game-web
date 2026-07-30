@@ -20,6 +20,7 @@ interface AuthRuntimeConfig {
     logoutPath: string;
     refreshPath: string;
     sessionPath: string;
+    registerPath: string;
   };
 }
 
@@ -54,6 +55,10 @@ export function createEventAuthBff<TCredentials extends Record<string, unknown>,
 
   return createAuthBffService<TCredentials, TSession>({
     backend: {
+      register: credentials => request<AuthTokenPayload<TSession>>(config.auth.registerPath, {
+        method: 'POST',
+        body: credentials,
+      }),
       login: credentials => request<AuthTokenPayload<TSession>>(config.auth.loginPath, {
         method: 'POST',
         body: credentials,

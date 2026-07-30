@@ -15,6 +15,11 @@ function createFixture() {
       refreshToken: 'refresh-secret',
       session: { id: 7, nickname: '玩家' },
     }),
+    register: vi.fn().mockResolvedValue({
+      accessToken: 'access-secret',
+      refreshToken: 'refresh-secret',
+      session: { id: 7, nickname: null, username: 'player7' },
+    }),
     logout: vi.fn().mockResolvedValue(undefined),
     refresh: vi.fn().mockResolvedValue({
       accessToken: 'next-access',
@@ -28,6 +33,16 @@ function createFixture() {
 }
 
 describe('认证 BFF', () => {
+  it('注册成功后令牌只进入 Cookie', async () => {
+    const { backend, cookies, service } = createFixture();
+
+    const result = await service.register({ username: 'player7', password: 'secret' });
+
+    expect(backend.register).toHaveBeenCalledWith({ username: 'player7', password: 'secret' });
+    expect(cookies.setTokens).toHaveBeenCalledWith('access-secret', 'refresh-secret');
+    expect(result).toEqual({ session: { id: 7, nickname: null, username: 'player7' } });
+  });
+
   it('登录成功后将令牌写入 Cookie 且正文仅返回会话', async () => {
     const { backend, cookies, service } = createFixture();
 

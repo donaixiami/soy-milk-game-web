@@ -24,10 +24,11 @@ export default defineNuxtConfig({
     backendBaseUrl: '',
     cookieSecret: '',
     auth: {
-      loginPath: '/api/auth/login',
-      logoutPath: '/api/auth/logout',
-      refreshPath: '/api/auth/refresh',
-      sessionPath: '/api/auth/session',
+      registerPath: '/api/game-api/auth/register',
+      loginPath: '/api/game-api/auth/login',
+      logoutPath: '/api/game-api/auth/logout',
+      refreshPath: '/api/game-api/auth/refresh',
+      sessionPath: '/api/game-api/auth/session',
     },
     public: {
       siteUrl: 'http://localhost:3001',
